@@ -585,10 +585,7 @@ open class QSTileViewImpl @JvmOverloads constructor(
         }
     }
 
-    private fun getUnavailableText(spec: String?): String {
-        val arrayResId = SubtitleArrayMapping.getSubtitleId(spec)
-        return resources.getStringArray(arrayResId)[Tile.STATE_UNAVAILABLE]
-    }
+    return ""
 
     /*
      * The view should not be animated if it's not on screen and no part of it is visible.
