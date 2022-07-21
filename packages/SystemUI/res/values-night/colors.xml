@@ -109,4 +109,5 @@
     <color name="udfps_enroll_progress_help_with_talkback">#FFEE675C</color>
 
     <color name="volume_seekbar_bg">@android:color/system_accent2_700</color>
+
 </resources>
