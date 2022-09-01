@@ -57,6 +57,7 @@ import android.view.Window;
 import android.view.WindowManagerGlobal;
 
 import com.android.internal.content.ReferrerIntent;
+import com.android.internal.util.PropImitationHooks;
 
 import java.io.File;
 import java.lang.annotation.Retention;
@@ -1245,6 +1246,7 @@ public class Instrumentation {
                 .instantiateApplication(cl, className);
         app.attach(context);
         maybeSpoofBuild(app);
+        PropImitationHooks.setProps(app);
         return app;
     }
     
@@ -1263,6 +1265,7 @@ public class Instrumentation {
         Application app = (Application)clazz.newInstance();
         app.attach(context);
         maybeSpoofBuild(app);
+        PropImitationHooks.setProps(app);
         return app;
     }
 
