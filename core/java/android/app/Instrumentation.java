@@ -1246,7 +1246,7 @@ public class Instrumentation {
                 .instantiateApplication(cl, className);
         app.attach(context);
         maybeSpoofBuild(app);
-        PropImitationHooks.setProps(app);
+        PropImitationHooks.setProps(context);
         return app;
     }
     
@@ -1265,7 +1265,7 @@ public class Instrumentation {
         Application app = (Application)clazz.newInstance();
         app.attach(context);
         maybeSpoofBuild(app);
-        PropImitationHooks.setProps(app);
+        PropImitationHooks.setProps(context);
         return app;
     }
 
