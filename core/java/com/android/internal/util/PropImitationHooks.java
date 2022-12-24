@@ -61,6 +61,7 @@ public class PropImitationHooks {
     private static final String PACKAGE_GPHOTOS = "com.google.android.apps.photos";
     private static final String PACKAGE_NETFLIX = "com.netflix.mediaclient";
     private static final String PACKAGE_SNAPCHAT = "com.snapchat.android";
+    private static final String PACKAGE_SMS_ORGANIZER = "com.microsoft.android.smsorganizer";
     private static final String PACKAGE_VELVET = "com.google.android.googlequicksearchbox";
 
     private static final String PROCESS_GMS_PERSISTENT = PACKAGE_GMS + ".persistent";
@@ -117,7 +118,7 @@ public class PropImitationHooks {
 
         /* Set certified properties for GMSCore
          * Set stock fingerprint for ARCore
-         * Set Pixel 5 for Snapchat, Google, ASI and GMS device configurator
+         * Set Pixel 5 for Snapchat, SMS Organizer, Google, ASI and GMS device configurator
          * Set Pixel XL for Google Photos
          * Set custom model for Netflix
          */
@@ -129,6 +130,7 @@ public class PropImitationHooks {
         } else if (sSpoofGapps && (packageName.equals(PACKAGE_VELVET)
                 || packageName.equals(PACKAGE_ASI)
                 || packageName.equals(PACKAGE_SNAPCHAT)
+                || packageName.equals(PACKAGE_SMS_ORGANIZER)
                 || (packageName.equals(PACKAGE_GMS)
                     && processName.equals(PROCESS_GMS_PERSISTENT)))) {
             dlog("Spoofing Pixel 5 for: " + packageName + " process: " + processName);
