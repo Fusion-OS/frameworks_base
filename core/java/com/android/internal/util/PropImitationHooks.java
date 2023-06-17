@@ -63,9 +63,20 @@ public class PropImitationHooks {
     private static final String PACKAGE_SNAPCHAT = "com.snapchat.android";
     private static final String PACKAGE_SMS_ORGANIZER = "com.microsoft.android.smsorganizer";
     private static final String PACKAGE_VELVET = "com.google.android.googlequicksearchbox";
+    private static final String PACKAGE_WALLPAPER_EMOJI = "com.google.android.apps.emojiwallpaper";
+    private static final String PACKAGE_WALLPAPER_EFFECT = "com.google.android.wallpaper.effects";
 
     private static final String PROCESS_GMS_PERSISTENT = PACKAGE_GMS + ".persistent";
     private static final String PROCESS_GMS_UNSTABLE = PACKAGE_GMS + ".unstable";
+
+    private static final Map<String, Object> sPixel7Props = Map.of(
+        "BRAND", "google",
+        "MANUFACTURER", "Google",
+        "DEVICE", "cheetah",
+        "PRODUCT", "cheetah",
+        "MODEL", "Pixel 7 Pro",
+        "FINGERPRINT", "google/cheetah/cheetah:13/TQ3A.230605.012/10204971:user/release-keys"
+    );
 
     private static final Map<String, Object> sPixelProps = Map.of(
         "BRAND", "google",
@@ -119,6 +130,7 @@ public class PropImitationHooks {
         /* Set certified properties for GMSCore
          * Set stock fingerprint for ARCore
          * Set Pixel 5 for Snapchat, SMS Organizer, Google, ASI and GMS device configurator
+         * Set Pixel 7 Pro for WallpaperEmoji and WallpaperEffect
          * Set Pixel XL for Google Photos
          * Set custom model for Netflix
          */
@@ -135,6 +147,10 @@ public class PropImitationHooks {
                     && processName.equals(PROCESS_GMS_PERSISTENT)))) {
             dlog("Spoofing Pixel 5 for: " + packageName + " process: " + processName);
             sPixelProps.forEach(PropImitationHooks::setPropValue);
+        } else if (sSpoofGapps && (packageName.equals(PACKAGE_WALLPAPER_EMOJI)
+                || packageName.equals(PACKAGE_WALLPAPER_EFFECT))) {
+            dlog("Spoofing Pixel 7 Pro for: " + packageName + " process: " + processName);
+            sPixel7Props.forEach(PropImitationHooks::setPropValue);
         } else if (sIsPhotos) {
             dlog("Spoofing Pixel XL for Google Photos");
             sPixelXLProps.forEach(PropImitationHooks::setPropValue);
