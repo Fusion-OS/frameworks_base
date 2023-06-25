@@ -155,6 +155,7 @@ public class QSPanelController extends QSPanelControllerBase<QSPanel> {
         if (mBrightnessMirrorController != null) {
             mBrightnessSliderController.setMirrorControllerAndMirror(mBrightnessMirrorController);
         }
+    }
 
     @Override
     protected void onSplitShadeChanged(boolean shouldUseSplitNotificationShade) {
