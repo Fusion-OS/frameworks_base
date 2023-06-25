@@ -293,15 +293,18 @@ public class NavigationBarEdgePanel extends View implements NavigationEdgeBackPl
         private final LatencyTracker mLatencyTracker;
         private final VibratorHelper mVibratorHelper;
         private final Executor mBackgroundExecutor;
+        private final DisplayTracker mDisplayTracker;
 
         @Inject
         public Factory(
                 LatencyTracker latencyTracker,
                 VibratorHelper vibratorHelper,
-                @Background Executor backgroundExecutor) {
+                @Background Executor backgroundExecutor,
+                DisplayTracker displayTracker) {
             mLatencyTracker = latencyTracker;
             mBackgroundExecutor = backgroundExecutor;
             mVibratorHelper = vibratorHelper;
+            mDisplayTracker = displayTracker;
         }
 
         public NavigationBarEdgePanel create(Context context) {
@@ -309,7 +312,8 @@ public class NavigationBarEdgePanel extends View implements NavigationEdgeBackPl
                 context,
                 mLatencyTracker,
                 mVibratorHelper,
-                mBackgroundExecutor
+                mBackgroundExecutor,
+                mDisplayTracker
             );
         }
     }
