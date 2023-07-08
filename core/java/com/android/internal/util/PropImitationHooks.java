@@ -111,8 +111,15 @@ public class PropImitationHooks {
         "PIXEL_2021_MIDYEAR_EXPERIENCE"
     );
 
+    private static final Set<String> sTensorFeatureBlacklist = Set.of(
+        "PIXEL_2022_EXPERIENCE",
+        "PIXEL_2022_MIDYEAR_EXPERIENCE",
+        "PIXEL_2021_EXPERIENCE",
+        "PIXEL_2021_MIDYEAR_EXPERIENCE"
+    );
+
     private static volatile String sProcessName;
-    private static volatile boolean sIsGms, sIsFinsky, sIsPhotos;
+    private static volatile boolean sIsGms, sIsFinsky, sIsPhotos, sIsASI;
 
     public static void setProps(Context context) {
         final String packageName = context.getPackageName();
@@ -127,6 +134,7 @@ public class PropImitationHooks {
         sIsGms = packageName.equals(PACKAGE_GMS) && processName.equals(PROCESS_GMS_UNSTABLE);
         sIsFinsky = packageName.equals(PACKAGE_FINSKY);
         sIsPhotos = sSpoofGapps && packageName.equals(PACKAGE_GPHOTOS);
+        sIsASI = sSpoofGapps && packageName.equals(PACKAGE_ASI);
 
         /* Set certified properties for GMSCore
          * Set stock fingerprint for ARCore
@@ -250,6 +258,10 @@ public class PropImitationHooks {
     public static boolean hasSystemFeature(String name, boolean def) {
         if (sIsPhotos && def && sFeatureBlacklist.stream().anyMatch(name::contains)) {
             dlog("Blocked system feature " + name + " for Google Photos");
+            return false;
+        }
+        if (sIsASI && def && sTensorFeatureBlacklist.stream().anyMatch(name::contains)) {
+            dlog("Blocked system feature " + name + " for ASI");
             return false;
         }
         return def;
