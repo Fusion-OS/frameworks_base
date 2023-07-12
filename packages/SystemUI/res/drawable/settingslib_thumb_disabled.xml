@@ -25,9 +25,9 @@
             <size
                 android:height="@dimen/settingslib_switch_thumb_size"
                 android:width="@dimen/settingslib_switch_thumb_size"/>
-            <stroke android:width="3dp" android:color="@color/settingslib_thumb_off_color"
-            android:alpha="?android:attr/disabledAlpha" />
-            <solid android:color="@*android:color/transparent"/>
+            <solid
+                android:color="@color/settingslib_thumb_off_color"
+                android:alpha="?android:attr/disabledAlpha"/>
         </shape>
     </item>
 </layer-list>
